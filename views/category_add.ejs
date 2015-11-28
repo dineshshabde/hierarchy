@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<p>Welcome to <%= title %></p>
+
+<p>
+    <a href="<%= config.url %>/category">View All category</a>
+</p>
+
+<form action="<%= config.url %>/category/add" method="post" autocomplete="off">
+    <table style="padding: 30px;">
+        <thead>
+        <tr>
+            <th>Label</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <label for="parent_category_id">
+                    Parent category
+                </label>
+            </td>
+            <td>
+                <select name="parent_category_id" id="parent_category_id" required>
+                    <option value=""> -- Choose Parent Category --</option>
+                    <% category.forEach(function(current){ %>
+                    <option value="<%= current.category_id %>"><%= current.t %></option>
+                    <% }); %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="category_name">
+                    Category Name
+                </label>
+            </td>
+            <td><input type="text" name="category_name" id="category_name" required/></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="category_description">
+                    Category Description
+                </label>
+            </td>
+            <td>
+                <textarea name="category_description" id="category_description" cols="30" rows="10"></textarea>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="2">
+                <button type="submit" name="add_category">
+                    Add
+                </button>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
+<ul>
+
+</ul>
+</body>
+</html>

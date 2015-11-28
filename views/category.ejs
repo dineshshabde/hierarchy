@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <style type="text/css">
+        .hoverTable {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hoverTable td {
+            padding: 7px;
+            border: #4e95f4 1px solid;
+        }
+
+        /* Define the default color for all the table rows */
+        .hoverTable tr {
+            background: #b8d1f3;
+        }
+
+        /* Define the hover highlight color for the table row */
+        .hoverTable tr:hover {
+            background-color: #ffff99;
+        }
+    </style>
+</head>
+<body>
+<h1><%= title %></h1>
+
+<p>Welcome to <%= title %></p>
+
+<p>
+    <a href="<%= config.url %>/category/add">Add a category</a>
+</p>
+
+<table class="hoverTable">
+    <thead>
+    <tr>
+        <th>Category Name</th>
+        <th>LEFT</th>
+        <th>RIGHT</th>
+        <th>Parent ID</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% category.forEach(function(current){ %>
+    <tr>
+        <td><%= current.t %></td>
+        <td><%= current.lft %></td>
+        <td><%= current.rgt %></td>
+        <td><%= current.parent_category_id %></td>
+        <td>
+            <a href="<%= config.url %>/category/remove/<%= current.category_id %>" style="color: red;">Remove</a>
+        </td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+</body>
+</html>
